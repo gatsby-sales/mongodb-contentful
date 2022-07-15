@@ -6,8 +6,9 @@ import Link from "../components/link";
 import LinkContainer from "../components/link-container";
 import Section from "../components/section";
 import Heading from "../components/heading";
+import { graphql } from "gatsby";
 
-export default function Features({ heading, secondaryHeading, content }) {
+export default function Features({ heading, secondaryHeading, features }) {
   return (
     <Section>
       <Heading center>{heading}</Heading>
@@ -15,10 +16,11 @@ export default function Features({ heading, secondaryHeading, content }) {
         {secondaryHeading}
       </Heading>
       <div className={styles.content}>
-        {content.map((item, i) => (
+        {features.map((item, i) => (
           <Feature
             {...item}
             orientation={i % 2 === 0 ? "default" : "reverse"}
+            key={item.id}
           />
         ))}
       </div>
@@ -26,25 +28,14 @@ export default function Features({ heading, secondaryHeading, content }) {
   );
 }
 
-function Feature({
-  primaryText,
-  secondaryText,
-  image,
-  links,
-  orientation = "default",
-}) {
+function Feature({ heading, body, image, links, orientation = "default" }) {
   const orientationStyle = orientation === "default" ? "" : styles.reverse;
-
   return (
     <div className={`${styles.featureContainer} ${orientationStyle}`}>
       <div className={styles.copyColumn}>
         <div className={styles.copyContainer}>
-          <MarkdownText
-            as="h4"
-            className={styles.primaryText}
-            {...primaryText}
-          />
-          <MarkdownText className={styles.secondaryText} {...secondaryText} />
+          <h4 className={styles.primaryText}>{heading}</h4>
+          <MarkdownText className={styles.secondaryText} {...body} />
           <LinkContainer>
             {links && links.map((link) => <Link key={link.id} {...link} />)}
           </LinkContainer>
@@ -53,9 +44,32 @@ function Feature({
       <div className={styles.imageColumn}>
         <GatsbyImage
           image={getImage(image)}
-          alt={image.title || getText(primaryText)}
+          alt={image.title || getText(heading)}
         />
       </div>
     </div>
   );
 }
+export const query = graphql`
+  fragment FeaturesFragment on ContentfulFeatures {
+    id
+    heading
+    secondaryHeading
+    features {
+      id
+      heading
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+      image {
+        gatsbyImageData
+        title
+      }
+    }
+    internal {
+      type
+    }
+  }
+`;

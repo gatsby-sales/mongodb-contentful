@@ -28,6 +28,8 @@
   font-weight: bold;
   font-size: var(--font-size-4);
   color: inherit;
+  display: inline-block;
+  padding: 12px 0;
 }
 .header a:hover,
 .header a:focus {

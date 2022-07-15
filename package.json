@@ -30,11 +30,18 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.1",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-image": "^2.18.1",
     "gatsby-plugin-manifest": "^4.4.0",
+    "gatsby-plugin-react-helmet": "^5.18.0",
+    "gatsby-plugin-sharp": "^4.18.1",
+    "gatsby-remark-prismjs": "^6.18.0",
     "gatsby-source-contentful": "^7.2.0",
-    "gatsby-theme-landing-page": "1.0.2",
+    "gatsby-transformer-remark": "^5.18.1",
+    "gatsby-transformer-sharp": "^4.18.1",
+    "prismjs": "^1.28.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "chalk": "^4.0.0",

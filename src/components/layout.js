@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import { Head } from "gatsby-theme-landing-page";
+import Head from "./head";
 import "../styles.css";
-import * as cssVars from "gatsby-theme-landing-page/src/styles/variables.module.css";
+import * as cssVars from "./variables.module.css";
 import * as styles from "./layout.module.css";
 
 export default function Layout(props) {
@@ -10,7 +10,7 @@ export default function Layout(props) {
     <div className={[cssVars.root, styles.root].join(" ")}>
       <Head {...props} />
       <header className={styles.header}>
-        <Link to="/">gatsby-starter-landing-page</Link>
+        <Link to="/">MongoDB + Gatsby</Link>
       </header>
       <main className={styles.main}>{props.children}</main>
       <footer className={styles.footer}>

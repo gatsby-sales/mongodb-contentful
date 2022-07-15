@@ -29,9 +29,25 @@ module.exports = {
       "Create custom landing pages using Gatsby and Contentful with this Gatsby Starter",
   },
   plugins: [
+    "gatsby-plugin-image",
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-theme-landing-page`,
-      options: contentfulConfig,
+      resolve: "gatsby-source-contentful",
+      options: {
+        downloadLocal: true,
+        ...contentfulConfig,
+      },
+    },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, // Needed for dynamic images
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        footnotes: true,
+        gfm: true,
+        plugins: ["gatsby-remark-prismjs"],
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
