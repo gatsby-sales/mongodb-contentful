@@ -46,6 +46,7 @@
   "devDependencies": {
     "chalk": "^4.0.0",
     "contentful-import": "^8.2.28",
+    "contentful-management": "^10.8.0",
     "husky": ">=6",
     "inquirer": "^8.2.0",
     "lint-staged": ">=10",
