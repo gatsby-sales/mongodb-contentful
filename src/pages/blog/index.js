@@ -55,26 +55,26 @@ export const query = graphql`
     }
   }
 `;
-export async function getServerData({ query }) {
-  if (query.page) {
-    const contentful = require("contentful");
+// export async function getServerData({ query }) {
+//   if (query.page) {
+//     const contentful = require("contentful");
 
-    const client = contentful.createClient({
-      space: process.env.CONTENTFUL_SPACE_ID,
-      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-    });
+//     const client = contentful.createClient({
+//       space: process.env.CONTENTFUL_SPACE_ID,
+//       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+//     });
 
-    const response = await client.getEntries({
-      content_type: "blogPost",
-      limit: 20,
-      skip: (query.page - 1) * 20,
-    });
-    return {
-      status: 200,
-      props: response.items,
-    };
-  }
-  return {
-    status: 200,
-  };
-}
+//     const response = await client.getEntries({
+//       content_type: "blogPost",
+//       limit: 20,
+//       skip: (query.page - 1) * 20,
+//     });
+//     return {
+//       status: 200,
+//       props: response.items,
+//     };
+//   }
+//   return {
+//     status: 200,
+//   };
+// }
