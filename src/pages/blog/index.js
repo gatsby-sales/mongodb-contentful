@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { graphql, Link } from "gatsby";
 import Section from "../../components/section";
 import Layout from "../../components/layout";
 import Page from "../../components/page";
 import Container from "../../components/container";
 
-export default function BlogHome({ data, location }) {
-  const search = new URLSearchParams(location.search);
-  const page = search.get("page");
+export default function BlogHome({ data }) {
+  // const search = new URLSearchParams(location.search);
+  // const page = search.get("page");
 
-  const [posts, setPosts] = useState(data.allContentfulBlogPost.nodes);
+  const posts = data.allContentfulBlogPost.nodes;
 
   return (
     <Layout>
