@@ -34,7 +34,6 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        downloadLocal: true,
         ...contentfulConfig,
       },
     },
